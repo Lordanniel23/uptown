@@ -93,7 +93,7 @@
             <td>
                <center>
                   <!-- <a href="/admin/discount/{{$discount->id}}/edit" class="edit"><button type="button" class="btn btn-primary rounded">Edit</button></a> -->
-                  <a href="#editEmployeeModal" class="edit editButton" id="{{$discount->name}}" discount="{{$discount->Percentage}}" data-id="{{$discount->id}}"><button type="button"  class="btn btn-primary rounded" data-bs-toggle="modal"   data-bs-target="#editmodal">Edit</button></a>
+                  <a href="#editEmployeeModal" class="edit editButton" id="{{$discount->name}}" abbr="{{$discount->abbr}}" discount="{{$discount->Percentage}}" data-id="{{$discount->id}}"><button type="button"  class="btn btn-primary rounded" data-bs-toggle="modal"   data-bs-target="#editmodal">Edit</button></a>
                   <a href="#deleteEmployeeModal"  class="delete archiveButton" id="{{$discount->name}}" data-id="{{$discount->id}}"><button type="button"  class="btn btn-warning" data-bs-toggle="modal"   data-bs-target="#exampleModal">Archive</button></a>
                </center>
             </td>
@@ -206,7 +206,7 @@
                         <label for="discount">Abbreviation</label>
                      </div>
                      <div class="col-8">
-                        <input class="form-control" type="text" id="abbr" name="abbr" min=0 max=100 required>
+                        <input class="form-control" type="text" id="abbredit" name="abbr" min=0 max=100 required>
                      </div>
                   </div>
                </div>
@@ -248,10 +248,12 @@
      e.preventDefault();
    var id = $(this).attr("data-id");
    var name = $(this).attr("id");
+   var abbr = $(this).attr("abbr");
    var discount = $(this).attr("discount");
    $(".nameedit").text(name);
    $('#name').attr('value', name);
    $('#discount').attr('value', discount);
+   $('#abbredit').attr('value', abbr);
    $('#editform').attr('action', "/admin/discount/edit/"+id);
    console.log(test);
    });

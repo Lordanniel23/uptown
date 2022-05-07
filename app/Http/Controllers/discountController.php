@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 
 class discountController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -37,6 +37,7 @@ class discountController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $name = $request->name;
         $discount = $request->discount;
         $roles = DB::select("INSERT INTO discount(name,Percentage,status) VALUES ('$name', '$discount','1')");
