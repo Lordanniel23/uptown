@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\COntrollers\waiterController;
-use App\Http\COntrollers\kitchenController;
-use App\Http\COntrollers\cashierController;
-use App\Http\COntrollers\menuController;
+use App\Http\Controllers\waiterController;
+use App\Http\Controllers\kitchenController;
+use App\Http\Controllers\cashierController;
+use App\Http\Controllers\menuController;
 use App\Events\Message;
 use App\Events\CreateTicket;
 use App\Events\CreateOrder;
