@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
-use Datetime;
-use Carbon\Carbon;
 
 class cashierController extends Controller
 {
@@ -39,7 +37,7 @@ class cashierController extends Controller
         $orderTaken=DB::select('select orders.id ,ticket.id as ticket_id from orders , ticket where orders.status_id =2 and ticket.ticket_status_id =2 and orders.ticket_id = ticket.id; ');
         $ordersCount = count($orderTaken);
         // dd($available);
-        return view('cashier.index', compact('tables','categories2','categories','menus','roles','discount','user','available','timestarted','discs','ordersCount','discount2','roles','address','contactnumber'));
+        return view('cashier.index', compact('tables','categories2','categories','menus','roles','discount','user','available','timestarted','discs','ordersCount','discount2','roles','address',''));
     }
 
     /**
@@ -124,17 +122,10 @@ class cashierController extends Controller
     }
 
     public function timeEnding(){
-        $todayDate = Carbon::now();
-        // $todayDate=$todayDate->format('g:i a');
-
         $items = DB::select('select ticket.table_id as tableID ,ticket.Start_time as start_time,tables.end_time as end_time  from ticket,tables where Start_time != " " and tables.end_time != " " and ticket_status_id = 2 and tables.id = ticket.table_id ;');
-        //less than 30 mins
-        $items2 = DB::select('select ticket.table_id as tableID ,ticket.Start_time as start_time,tables.end_time as end_time  from ticket,tables where Start_time != " " and tables.end_time != " " and ticket_status_id = 2 and tables.id = ticket.table_id  ;');
         $data['timeEnding']= $items;
-        $data['timeEndingList']= $items2;
         return $data;
     }
-
     public function tableStatusIndicator(){
 
         $tableStatusIndicator = DB::select('select ticket.id as ticket_id,tables.id as table_id , sum(orders.status_id = 2) as confirmed, sum(orders.status_id = 3) as to_serve,sum(orders.status_id = 4) as delivered from  ticket,orders,tables where orders.ticket_id = ticket.id and tables.id = ticket.table_id and ticket.ticket_status_id =2 group by ticket.id ; ');
@@ -155,6 +146,7 @@ class cashierController extends Controller
                 $orderid=$menuGroup[$a]->order_id;
                 $updatedeliver=DB::select("update orders set status_id=5 where id=$orderid" );
                 }
+
         return  $menuGroup;
     }
 
