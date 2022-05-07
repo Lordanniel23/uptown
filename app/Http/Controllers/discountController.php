@@ -37,10 +37,11 @@ class discountController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $name = $request->name;
         $discount = $request->discount;
-        $roles = DB::select("INSERT INTO discount(name,Percentage,status) VALUES ('$name', '$discount','1')");
+        $abbr = $request->abbr;
+        $roles = DB::select("INSERT INTO discount(name,Percentage,status,abbr) VALUES ('$name', '$discount','1','$abbr')");
         toastr()->success($name .' Created Successfully!');
         return redirect('admin/discount');
     }

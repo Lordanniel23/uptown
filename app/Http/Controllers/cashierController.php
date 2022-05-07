@@ -37,7 +37,7 @@ class cashierController extends Controller
         $orderTaken=DB::select('select orders.id ,ticket.id as ticket_id from orders , ticket where orders.status_id =2 and ticket.ticket_status_id =2 and orders.ticket_id = ticket.id; ');
         $ordersCount = count($orderTaken);
         // dd($available);
-        return view('cashier.index', compact('tables','categories2','categories','menus','roles','discount','user','available','timestarted','discs','ordersCount','discount2','roles','address',''));
+        return view('cashier.index', compact('tables','categories2','categories','menus','roles','discount','user','available','timestarted','discs','ordersCount','discount2','roles','address','contactnumber'));
     }
 
     /**
