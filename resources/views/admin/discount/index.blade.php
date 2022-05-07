@@ -185,7 +185,7 @@
             <form id="editform" action="" method='POST'>
                @csrf @method('get')
                <div class="container" >
-                  <div class="row">
+                  <div class="row" style="padding-bottom:1em;">
                      <div class="col-4">
                         <label for="name">Name</label>
                      </div>
@@ -203,7 +203,7 @@
                   </div>
                   <div class="row" style="padding-bottom:1em;">
                      <div class="col-4">
-                        <label for="discount">Ab</label>
+                        <label for="discount">Abbreviation</label>
                      </div>
                      <div class="col-8">
                         <input class="form-control" type="text" id="abbr" name="abbr" min=0 max=100 required>
