@@ -79,8 +79,9 @@ class discountController extends Controller
     {
         $discount = $request->discount;
         $name = $request->name;
+        $abbr = $request->abbr;
         // dd($name);
-        $roles = DB::select("UPDATE discount SET Percentage = '$discount' , name = '$name' WHERE id =$id ");
+        $roles = DB::select("UPDATE discount SET Percentage = '$discount' , name = '$name' , abbr = '$abbr' WHERE id =$id");
         toastr()->success($name .' Updated Successfully!');
         return redirect('admin/discount');
     }
@@ -102,7 +103,7 @@ class discountController extends Controller
     //archived part
     public function archived()
     {
-        $discounts = DB::select("Select discount.id,discount.name,discount.Percentage,status_discount.status from discount,status_discount where discount.status = status_discount.id and discount.status = 3" );
+        $discounts = DB::select("Select discount.id,discount.name,discount.Percentage,status_discount.status,discount.abbr from discount,status_discount where discount.status = status_discount.id and discount.status = 3" );
         return view('admin/discount.archived', compact('discounts'));
     }
     public function restore($id)

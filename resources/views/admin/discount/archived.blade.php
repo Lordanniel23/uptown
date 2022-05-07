@@ -61,7 +61,9 @@
             <th>
                <center>Discount</center>
             </th>
-            <!-- <th><center>Status</center></th> -->
+            <th>
+               <center>Abbreviation</center>
+            </th>
             <th>
                <center>Action</center>
             </th>
@@ -75,6 +77,9 @@
             </td>
             <td>
                <center class="p-1"><span >{{$discount->Percentage}} %</span></center>
+            </td>
+            <td>
+               <center class="p-1"><span >{{$discount->abbr}}</span></center>
             </td>
             <td>
                <center>
